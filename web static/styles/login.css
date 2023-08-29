@@ -1,0 +1,371 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.logo {
+    height: 90px;
+    width: 70%;
+    background: white url(../images/Q.png);
+    background-repeat: no-repeat;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    color: #484848;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: white;
+    height: 90px;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 960px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    border-top: 1px solid #dddddd;
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+    flex-wrap: wrap;
+}
+
+.documentation {
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .89em;
+    word-spacing: 2px;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.login {
+    width: 7.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .89em;
+    word-spacing: 2px;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.contact {
+    width: 7.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .89em;
+    word-spacing: 2px;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.custom-link {
+    text-decoration: none;
+    /* Remove the underline */
+    color: rgba(46, 46, 46, 0.8);
+    /* Change the color to your desired color */
+}
+.documentation:hover{
+    opacity: 80%;
+}
+.login:hover{
+    opacity: 80%;
+}
+.contact:hover{
+    opacity: 80%;
+}
+
+.img1 {
+    height: 700px;
+    width: 100%;
+    background: white url(../images/glenn-carstens-peters-ZWD3Dx6aUJg-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.anim2 {
+    object-fit: cover;
+}
+
+.anim2:hover::-webkit-media-controls {
+    display: none !important;
+}
+
+.anim2:hover::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+.anim2:hover::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+/* For Firefox */
+.anim2:hover::-moz-media-controls {
+    display: none !important;
+}
+
+.anim2:hover::media-controls {
+    display: none !important;
+}
+
+.filter {
+    justify-content: space-between;
+    margin-top: 5%;
+    width: 30%;
+    height: 50px;
+    border-radius: 4px;
+    
+}
+.searchInput{
+    display: flex;
+    text-align: center;
+    width: 80%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.btn {
+    background-color: rgba(3, 157, 196, 0.473);
+    border: 1px solid rgba(3, 157, 196, 0.473);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+    width: 30%;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+}
+input:focus {
+    outline: none;
+    border: 1px solid #CCCCCC;
+}
+.userText {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 1.5em;
+    word-spacing: 2px;
+}
+.img2{
+    height: 400px;
+    width: 60%;
+    background: white url(../images/john-matychuk-Af8ZjGMsHKQ-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container-sect1 {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1160px;
+}
+.text{
+    width: 30%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+a{
+    width: 30%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .87em;
+    word-spacing: 2px;
+    text-decoration: none;
+    color: #484848;
+    font-weight: 600;
+}
+
