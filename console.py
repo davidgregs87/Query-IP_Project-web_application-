@@ -34,14 +34,19 @@ class Query_IP(cmd.Cmd):
         """An empty line and enter should not do anything"""
         pass
 
-    def do_create(self, line):
+    def do_create(self, args):
         """ Creates a new instance of BaseModel, saves it (to the JSON file)
         and prints the id. Ex: $ create BaseModel"""
-        if line:
-            if line in classes:
-                new_inst = eval(line + '()')
-                print(new_inst.id)
-                new_inst.save()
+        arg = args.split(' ')
+        new_arg = arg[1].split('=')
+        strip_arg = new_arg[1].strip('"')
+        if arg[0]:
+            if arg[0] in classes:
+                new_instance = classes[arg[0]]()
+                new_instance.save()
+                print(new_instance.id)
+                key = "{}.{}".format(arg[0], new_instance.id)
+                setattr(storage.all()[key], new_arg[0], strip_arg)
             else:
                 print("**class dosen't exist**")
         else:
