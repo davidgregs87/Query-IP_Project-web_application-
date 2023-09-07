@@ -34,23 +34,35 @@ class Query_IP(cmd.Cmd):
         """An empty line and enter should not do anything"""
         pass
 
-    def do_create(self, args):
-        """ Creates a new instance of BaseModel, saves it (to the JSON file)
-        and prints the id. Ex: $ create BaseModel"""
-        arg = args.split(' ')
-        new_arg = arg[1].split('=')
-        strip_arg = new_arg[1].strip('"')
-        if arg[0]:
-            if arg[0] in classes:
-                new_instance = classes[arg[0]]()
-                new_instance.save()
-                print(new_instance.id)
-                key = "{}.{}".format(arg[0], new_instance.id)
-                setattr(storage.all()[key], new_arg[0], strip_arg)
-            else:
-                print("**class dosen't exist**")
+    def do_create(self, line):
+        """ Create an object of any class"""
+        args = line.split()
+        if args[0] not in classes:
+            print("*** class dosen't exist ***")
+        elif not args:
+            print("*** Parameters not found ***")
         else:
-            print("**class name missing**")
+            new_instance = classes[args[0]]()
+            print(new_instance.id)
+            new_instance.save()
+            attr = [s.replace('_', ' ')
+                    if s.startswith('name=') else s for s in args]
+            split_attr = [item.split('=') for item in attr]
+            new_attr = [[x.strip('"')
+                        for x in new] for new in split_attr]
+            attr_keys = [sublist[0]
+                         for sublist in new_attr if len(sublist) > 1]
+            attr_values = [sublist[1]
+                           for sublist in new_attr if len(sublist) > 1]
+            for key, value in storage.all().items():
+                obj = value
+
+            for k, v in zip(attr_keys, attr_values):
+                obj_dict = obj.__dict__
+                obj_dict[k] = v
+
+            storage.save()
+
 
     def help_create(self):
         print("create's a new instance of a class and prints it's id")
