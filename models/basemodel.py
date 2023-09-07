@@ -3,17 +3,27 @@
 
 from uuid import uuid4
 from datetime import datetime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, DateTime
+from os import getenv
 
+Base = declarative_base()
+
+storage_type = getenv('HBNB_TYPE_STORAGE')
 
 class BaseModel:
     """A basemodel class where all child classes will inherit from"""
+    if storage_type == 'db':
+        id = Column(String(60), nullable=False, primary_key=True)
+        created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+        updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+    
     def __init__(self, *args, **kwargs) -> None:
         if not kwargs:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            from models import storage
-            storage.new(self)
+            
         else:
             for key, val in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
@@ -24,8 +34,9 @@ class BaseModel:
     def save(self) -> datetime:
         """A method that saves the current state with the current time"""
         from models import storage
-        storage.save()
         self.updated_at = datetime.now()
+        storage.save()
+        storage.new(self)
     
     def __str__(self) -> str:
         """A string representation of our python objects"""
@@ -37,6 +48,13 @@ class BaseModel:
         my_dict["created_at"] = self.created_at.isoformat()
         my_dict["updated_at"] = self.updated_at.isoformat()
         my_dict["__class__"] = self.__class__.__name__
+        if '_sa_instance_state' in my_dict.keys():
+            del my_dict['_sa_instance_state']
         return my_dict
+    
+    def delete(self) -> None:
+        """A method that deletes an instance from storage"""
+        from models import storage
+        storage.delete(self)
 
   

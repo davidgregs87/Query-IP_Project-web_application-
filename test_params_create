@@ -1,6 +1,3 @@
-create User firstname="Betty"
-create User lastname="John"
-all User
-
-create User firstname="Michael" lastname="Gray" email="micky_gray_@gmail.com" phone_no=+23481347502382 number_bathrooms=2 pass_wd=mick34xG  latitude=37.773972 longitude=-122.431297
-all User
+create State name="California"
+create State name="Arizona"
+all State

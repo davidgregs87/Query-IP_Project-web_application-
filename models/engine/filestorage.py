@@ -37,7 +37,8 @@ class FileStorage:
             from models.basemodel import BaseModel
             from models.user import User
             from models.reviews import Review
-            classes = {"BaseModel": BaseModel, "User": User, "Review": Review}
+            from models.state import State
+            classes = {"BaseModel": BaseModel, "User": User, "Review": Review, "State": State}
             for key, val in load_obj.items():
                 obj_class = key.split('.')[0]
                 self.__objects[key] = classes[obj_class](**val)
